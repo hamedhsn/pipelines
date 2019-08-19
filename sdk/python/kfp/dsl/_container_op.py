@@ -16,7 +16,7 @@ import re
 import warnings
 from typing import Any, Dict, List, TypeVar, Union, Callable, Optional, Sequence
 
-from kubernetes.client import V1Toleration
+from kubernetes.client import V1Toleration, V1Affinity
 from kubernetes.client.models import (
     V1Container, V1EnvVar, V1EnvFromSource, V1SecurityContext, V1Probe,
     V1ResourceRequirements, V1VolumeDevice, V1VolumeMount, V1ContainerPort,
@@ -380,6 +380,14 @@ class Container(V1Container):
         self.image_pull_policy = image_pull_policy
         return self
 
+    def set_working_dir(self, working_dir):
+        """Set working dir for the container.
+        Args:
+          workdir: working directory path
+        """
+        self.working_dir = working_dir
+        return self
+
     def add_port(self, container_port):
         """Add a container port to the container.
 
@@ -683,6 +691,7 @@ class BaseOp(object):
         self.node_selector = {}
         self.volumes = []
         self.tolerations = []
+        self.affinity = {}
         self.pod_annotations = {}
         self.pod_labels = {}
         self.num_retries = 0
@@ -757,6 +766,23 @@ class BaseOp(object):
           https://github.com/kubernetes-client/python/blob/master/kubernetes/client/models/v1_toleration.py
         """
         self.tolerations.append(tolerations)
+        return self
+
+    def add_affinity(self, affinity: V1Affinity):
+        """Add K8s tolerations
+
+        Args:
+          volume: Kubernetes toleration
+          For detailed spec, check toleration definition
+          https://github.com/kubernetes-client/python/blob/master/kubernetes/client/models/v1_toleration.py
+        """
+
+        # affinity = V1Affinity(
+        #     node_affinity=client.V1NodeAffinity(
+        #     required_during_scheduling_ignored_during_execution=V1NodeSelector(
+        #         node_selector_terms=[V1NodeSelectorTerm(match_expressions=[client.V1NodeSelectorRequirement(key='beta.kubernetes.io/instance-type', operator='In', values=node_typs)])])))
+
+        self.affinity = affinity
         return self
 
     def add_node_selector_constraint(self, label_name, value):

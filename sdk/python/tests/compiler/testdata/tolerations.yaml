@@ -25,7 +25,7 @@ spec:
         path: "/mlpipeline-ui-metadata.json"
         optional: true
         s3:
-          endpoint: minio-service.kubeflow:9000
+          endpoint: 172.20.133.145:9000
           secretKeySecret:
             name: mlpipeline-minio-artifact
             key: secretkey
@@ -39,7 +39,7 @@ spec:
         path: "/mlpipeline-metrics.json"
         optional: true
         s3:
-          endpoint: minio-service.kubeflow:9000
+          endpoint: 172.20.133.145:9000
           secretKeySecret:
             name: mlpipeline-minio-artifact
             key: secretkey

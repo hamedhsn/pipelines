@@ -158,7 +158,7 @@ def _build_conventional_artifact(name, path):
         'path': path,
         's3': {
             # TODO: parameterize namespace for minio service
-            'endpoint': 'minio-service.kubeflow:9000',
+            'endpoint': '172.20.133.145:9000',
             'bucket': 'mlpipeline',
             'key': 'runs/{{workflow.uid}}/{{pod.name}}/' + name + '.tgz',
             'insecure': True,
@@ -240,6 +240,10 @@ def _op_to_template(op: BaseOp):
     # tolerations
     if processed_op.tolerations:
         template['tolerations'] = processed_op.tolerations
+
+    # tolerations
+    if processed_op.affinity:
+        template['affinity'] = K8sHelper.convert_k8s_obj_to_json(processed_op.affinity)
 
     # metadata
     if processed_op.pod_annotations or processed_op.pod_labels:

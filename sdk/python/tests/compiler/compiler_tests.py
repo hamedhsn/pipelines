@@ -103,7 +103,7 @@ class TestCompiler(unittest.TestCase):
               'name': 'mlpipeline-minio-artifact',
             },
             'bucket': 'mlpipeline',
-            'endpoint': 'minio-service.kubeflow:9000',
+            'endpoint': '172.20.133.145:9000',
             'insecure': True,
             'key': 'runs/{{workflow.uid}}/{{pod.name}}/mlpipeline-ui-metadata.tgz',
             'secretKeySecret': {
@@ -121,7 +121,7 @@ class TestCompiler(unittest.TestCase):
               'name': 'mlpipeline-minio-artifact',
             },
             'bucket': 'mlpipeline',
-            'endpoint': 'minio-service.kubeflow:9000',
+            'endpoint': '172.20.133.145:9000',
             'insecure': True,
             'key': 'runs/{{workflow.uid}}/{{pod.name}}/mlpipeline-metrics.tgz',
             'secretKeySecret': {
