@@ -13,9 +13,7 @@
 # limitations under the License.
 
 
-import kfp.dsl as dsl
-import datetime
-import os
+import kfp as dsl
 from kubernetes import client as k8s_client
 
 
@@ -120,5 +118,6 @@ def resnet_pipeline(
 
 
 if __name__ == '__main__':
-    import kfp.compiler as compiler
+    import kfp as compiler
+
     compiler.Compiler().compile(resnet_pipeline, __file__ + '.tar.gz')

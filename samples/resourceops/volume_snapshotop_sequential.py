@@ -13,7 +13,7 @@
 # limitations under the License.
 
 
-import kfp.dsl as dsl
+import kfp as dsl
 
 
 @dsl.pipeline(
@@ -82,6 +82,7 @@ def volume_snapshotop_sequential(url):
 
 
 if __name__ == "__main__":
-    import kfp.compiler as compiler
+    import kfp as compiler
+
     compiler.Compiler().compile(volume_snapshotop_sequential,
                                 __file__ + ".tar.gz")

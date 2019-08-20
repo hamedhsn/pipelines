@@ -1,4 +1,5 @@
-import kfp.dsl as dsl
+import kfp as dsl
+
 
 @dsl.pipeline(
   name='Prediction pipeline',
@@ -51,5 +52,6 @@ def tf_slim_optimize(
         file_outputs={})
 
 if __name__ == '__main__':
-    import kfp.compiler as compiler
+    import kfp as compiler
+
     compiler.Compiler().compile(tf_slim_optimize, __file__ + '.tar.gz')

@@ -13,7 +13,7 @@
 # limitations under the License.
 
 
-import kfp.dsl as dsl
+import kfp as dsl
 
 
 @dsl.pipeline(
@@ -54,5 +54,6 @@ def volume_op_dag():
 
 
 if __name__ == "__main__":
-    import kfp.compiler as compiler
+    import kfp as compiler
+
     compiler.Compiler().compile(volume_op_dag, __file__ + ".tar.gz")

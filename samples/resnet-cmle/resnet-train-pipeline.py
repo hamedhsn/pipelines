@@ -14,10 +14,9 @@
 # limitations under the License.
 
 
-import kfp.dsl as dsl
+import kfp as dsl
 import kfp.gcp as gcp
-import kfp.components as comp
-import datetime
+import kfp as comp
 import json
 import os
 
@@ -119,7 +118,8 @@ def resnet_train(
     preprocess_output = os.path.join(output_dir, 'preprocessed_output')
     train_output = os.path.join(output_dir, 'model')
     preprocess = resnet_preprocess_op(project_id, preprocess_output, preprocess_staging, train_csv,
-                                      validation_csv, labels, train_batch_size, eval_batch_size).apply(gcp.use_gcp_secret())
+                                      validation_csv, labels, train_batch_size, eval_batch_size).apply(
+        gcp.use_gcp_secret())
     train = resnet_train_op(project_id, preprocess_output, train_output, region, depth, train_batch_size,
                             eval_batch_size, steps_per_eval, train_steps, num_train_images, num_eval_images,
                             num_label_classes, tf_version).apply(gcp.use_gcp_secret())
@@ -130,5 +130,6 @@ def resnet_train(
 
 
 if __name__ == '__main__':
-    import kfp.compiler as compiler
+    import kfp as compiler
+
     compiler.Compiler().compile(resnet_train, __file__ + '.zip')

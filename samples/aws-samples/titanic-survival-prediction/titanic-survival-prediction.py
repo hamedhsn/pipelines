@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 
 import kfp
-from kfp import components
-from kfp import dsl
-from kfp import gcp
-from kfp.aws import use_aws_secret
+from kfp import components, dsl
+from kfp import use_aws_secret
 
 emr_create_cluster_op     = components.load_component_from_file('../../../components/aws/emr/create_cluster/component.yaml')
 emr_submit_spark_job_op = components.load_component_from_file('../../../components/aws/emr/submit_spark_job/component.yaml')

@@ -1,6 +1,6 @@
 import kfp
 import arena
-import kfp.dsl as dsl
+import kfp as dsl
 import argparse
 
 FLAGS = None
@@ -47,7 +47,8 @@ if __name__ == '__main__':
   EXPERIMENT_NAME="resnet101-allreduce"
   RUN_ID="run"
   KFP_SERVICE="ml-pipeline.kubeflow.svc.cluster.local:8888"
-  import kfp.compiler as compiler
+  import kfp as compiler
+
   compiler.Compiler().compile(sample_mpirun_pipeline, __file__ + '.tar.gz')
   client = kfp.Client(host=KFP_SERVICE)
   try:

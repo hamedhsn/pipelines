@@ -14,7 +14,6 @@
 
 import argparse
 import os
-import json
 import tarfile
 from datetime import datetime
 import utils

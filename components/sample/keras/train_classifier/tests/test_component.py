@@ -19,16 +19,17 @@ import unittest
 from contextlib import contextmanager
 from pathlib import Path
 
-import kfp.components as comp
+import kfp as comp
+
 
 @contextmanager
 def components_local_output_dir_context(output_dir: str):
-    old_dir = comp._components._outputs_dir
+    old_dir = kfp.components._components._outputs_dir
     try:
-        comp._components._outputs_dir = output_dir
+        kfp.components._components._outputs_dir = output_dir
         yield output_dir
     finally:
-        comp._components._outputs_dir = old_dir
+        kfp.components._components._outputs_dir = old_dir
 
 class KerasTrainClassifierTestCase(unittest.TestCase):
     def test_handle_training_xor(self):

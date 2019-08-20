@@ -13,7 +13,7 @@
 # limitations under the License.
 
 
-import kfp.dsl as dsl
+import kfp as dsl
 
 
 @dsl.pipeline(
@@ -53,5 +53,6 @@ def volumeop_sequential():
 
 
 if __name__ == "__main__":
-    import kfp.compiler as compiler
+    import kfp as compiler
+
     compiler.Compiler().compile(volumeop_sequential, __file__ + ".tar.gz")

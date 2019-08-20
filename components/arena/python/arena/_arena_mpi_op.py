@@ -14,9 +14,8 @@
 # limitations under the License.
 
 
-import kfp.dsl as dsl
-import datetime
-import logging
+import kfp as dsl
+
 
 def mpi_job_op(name, image, command, workers=1, gpus=0, cpu_limit=0, memory_limit=0, env=[], annotations=[],
           data=[], sync_source=None,

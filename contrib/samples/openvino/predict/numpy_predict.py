@@ -1,4 +1,4 @@
-import kfp.dsl as dsl
+import kfp as dsl
 
 
 @dsl.pipeline(
@@ -32,5 +32,6 @@ def openvino_predict(
      file_outputs={})
 
 if __name__ == '__main__':
-    import kfp.compiler as compiler
+    import kfp as compiler
+
     compiler.Compiler().compile(openvino_predict, __file__ + '.tar.gz')

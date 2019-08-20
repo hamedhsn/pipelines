@@ -12,10 +12,7 @@
 
 
 # generate default secret name
-import os
-import kfp
-from kfp import components
-from kfp import dsl
+from kfp import components, dsl
 import ai_pipeline_params as params
 
 secret_name = 'kfp-creds'
@@ -79,6 +76,7 @@ def kfp_wml_pipeline(
 
 if __name__ == '__main__':
     # compile the pipeline
-    import kfp.compiler as compiler
+    import kfp as compiler
+
     pipeline_filename = kfp_wml_pipeline.__name__ + '.zip'
     compiler.Compiler().compile(kfp_wml_pipeline, pipeline_filename)

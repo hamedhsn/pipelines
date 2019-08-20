@@ -14,9 +14,7 @@
 # limitations under the License.
 
 
-import kfp.dsl as dsl
-import datetime
-import logging
+import kfp as dsl
 
 
 def standalone_job_op(name, image, command, gpus=0, cpu_limit=0, memory_limit=0, env=[],

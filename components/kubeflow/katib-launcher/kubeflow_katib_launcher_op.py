@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import kfp.dsl as dsl
+import kfp as dsl
+
 
 def kubeflow_studyjob_launcher_op(name, namespace, optimizationtype, objectivevaluename, optimizationgoal, requestcount, metricsnames,
                                   parameterconfigs, nasConfig, workertemplatepath, mcollectortemplatepath, suggestionspec,

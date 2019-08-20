@@ -1,5 +1,4 @@
-
-import kfp.dsl as dsl
+import kfp as dsl
 
 
 @dsl.pipeline(
@@ -24,5 +23,6 @@ def download_optimize_and_upload(
 
 
 if __name__ == '__main__':
-    import kfp.compiler as compiler
+    import kfp as compiler
+
     compiler.Compiler().compile(download_optimize_and_upload, __file__ + '.tar.gz')

@@ -14,9 +14,7 @@
 # limitations under the License.
 
 
-import kfp.dsl as dsl
-import datetime
-import logging
+import kfp as dsl
 
 
 def estimator_op(name, image, command, 

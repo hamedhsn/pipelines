@@ -14,7 +14,7 @@
 # limitations under the License.
 
 
-import kfp.dsl as dsl
+import kfp as dsl
 
 
 @dsl.pipeline(
@@ -25,7 +25,7 @@ def immediate_value_pipeline():
   # "url" is a pipeline parameter with value being hard coded.
   # It is useful in case for some component you want to hard code a parameter instead
   # of exposing it as a pipeline parameter.
-  url=dsl.PipelineParam(name='url', value='gs://ml-pipeline-playground/shakespeare1.txt')
+  url= dsl.PipelineParam(name='url', value='gs://ml-pipeline-playground/shakespeare1.txt')
   op1 = dsl.ContainerOp(
      name='download',
      image='google/cloud-sdk:216.0.0',
@@ -39,5 +39,6 @@ def immediate_value_pipeline():
      arguments=['echo %s' % op1.output])
 
 if __name__ == '__main__':
-  import kfp.compiler as compiler
+  import kfp as compiler
+
   compiler.Compiler().compile(immediate_value_pipeline, __file__ + '.zip')

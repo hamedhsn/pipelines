@@ -16,9 +16,7 @@
 
 
 import kfp
-from kfp import components
-from kfp import dsl
-from kfp import gcp
+from kfp import components, gcp, dsl
 
 confusion_matrix_op = components.load_component_from_url('https://raw.githubusercontent.com/kubeflow/pipelines/eb830cd73ca148e5a1a6485a9374c2dc068314bc/components/local/confusion_matrix/component.yaml')
 roc_op =              components.load_component_from_url('https://raw.githubusercontent.com/kubeflow/pipelines/eb830cd73ca148e5a1a6485a9374c2dc068314bc/components/local/roc/component.yaml')

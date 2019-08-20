@@ -1,0 +1,3 @@
+[
+  "tests/compiler/test_op_to_template.py::test_tolerations"
+]

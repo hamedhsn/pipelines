@@ -15,10 +15,7 @@
 
 
 import kfp
-from kfp import components
-from kfp import dsl
-from kfp import gcp
-
+from kfp import components, gcp, dsl
 
 dataflow_tf_data_validation_op  = components.load_component_from_url('https://raw.githubusercontent.com/kubeflow/pipelines/eb830cd73ca148e5a1a6485a9374c2dc068314bc/components/dataflow/tfdv/component.yaml')
 dataflow_tf_transform_op        = components.load_component_from_url('https://raw.githubusercontent.com/kubeflow/pipelines/eb830cd73ca148e5a1a6485a9374c2dc068314bc/components/dataflow/tft/component.yaml')

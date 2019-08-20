@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
 import kfp
-from kfp import components
-from kfp import dsl
-from kfp.aws import use_aws_secret
+from kfp import components, dsl
+from kfp import use_aws_secret
 
 sagemaker_train_op = components.load_component_from_file('../../../components/aws/sagemaker/train/component.yaml')
 sagemaker_model_op = components.load_component_from_file('../../../components/aws/sagemaker/model/component.yaml')

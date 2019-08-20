@@ -1,6 +1,4 @@
-import kfp
-from kfp import components
-from kfp import dsl
+from kfp import components, dsl
 import ai_pipeline_params as params
 
 # generate default secret name
@@ -47,5 +45,6 @@ def ffdlPipeline(
 
 
 if __name__ == '__main__':
-    import kfp.compiler as compiler
+    import kfp as compiler
+
     compiler.Compiler().compile(ffdlPipeline, __file__ + '.tar.gz')
